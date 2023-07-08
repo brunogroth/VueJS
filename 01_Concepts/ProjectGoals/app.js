@@ -1,29 +1,9 @@
-Vue.createApp({
-  data() { // this is the same as data: function() {}
+const app = Vue.createApp({
+  data() {
     return {
-      goals: [],
-      enteredValue: ''
+      courseGoal: 'Finish the course and learn Vue.'
     };
-  },
-  methods: { 
-    addGoal() {
-      this.goals.push(this.enteredValue);
-      this.enteredValue = '';
-    }
-  },
-}).mount('#app');
+  }
+});
 
-// var btn = document.querySelector('button');
-// var input = document.querySelector('input');
-// var list = document.querySelector('ul');
-
-// function addItem(){
-//     var text = input.value;
-//     var listItem = document.createElement('li');
-//     listItem.textContent = text;
-//     list.appendChild(listItem);
-//     input.value = '';
-
-// }
-
-// btn.addEventListener('click', addItem);
+app.mount('#user-goal');
