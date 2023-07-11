@@ -17,9 +17,12 @@
     </header>
     <section id="user-goal">
       <h2>Events in Action</h2>
-      <button v-on:click="counter++">Add</button>
-      <button v-on:click="counter--">Reduce</button>
+      <button v-on:click="increment">Add</button>
+      <button v-on:click.left="decrement">Reduce</button>
       <p>Result: {{ counter }}</p>
+      <input type="text" v-on:input="setName" v-on:keyup.enter="confirmName">
+      <p>Your Name: {{ name }}</p>
+      <p>Confirmed Name: {{ confirmedName }} <small>(Press enter to confirm)</small></p>
     </section>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="app.js"></script>
