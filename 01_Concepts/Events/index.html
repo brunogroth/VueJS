@@ -13,18 +13,15 @@
   </head>
   <body>
     <header>
-      <h1>Vue Course Goals</h1>
+      <h1>Vue Events</h1>
     </header>
     <section id="user-goal">
-      <h2>My Course Goal</h2>
-      <p>{{ courseGoal }}</p>
-
-      <p> Learn more <a v-bind:href="vueLink">about Vue</a>.</p>
-      <button v-on:click="outputGoal">Update goal</button>
+      <h2>Events in Action</h2>
+      <button v-on:click="counter++">Add</button>
+      <button v-on:click="counter--">Reduce</button>
+      <p>Result: {{ counter }}</p>
     </section>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script src="app.js">
-      outputGoal();
-    </script>
+    <script src="app.js"></script>
   </body>
 </html>
