@@ -20,7 +20,7 @@
       <button v-on:click="increment">Add</button>
       <button v-on:click.left="decrement">Reduce</button>
       <p>Result: {{ counter }}</p>
-      <input type="text" v-on:input="setName" v-on:keyup.enter="confirmName">
+      <input type="text" v-model="name" v-on:keyup.enter="confirmName">
       <p>Your Name: {{ name }}</p>
       <p>Confirmed Name: {{ confirmedName }} <small>(Press enter to confirm)</small></p>
     </section>
