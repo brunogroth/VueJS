@@ -21,8 +21,10 @@
       <button v-on:click.left="decrement">Reduce</button>
       <p>Result: {{ counter }}</p>
       <input type="text" v-model="name" v-on:keyup.enter="confirmName">
+      <input type="text" v-model="lastName">
+      
       <p>Your Name: {{ fullName }}</p>
-      <p>Confirmed Name: {{ confirmedName }} <small>(Press enter to confirm)</small></p>
+      <p>Confirmed First Name: {{ confirmedName }} <small>(Press enter to confirm)</small></p>
     </section>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="app.js"></script>
