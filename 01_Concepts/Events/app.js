@@ -7,6 +7,15 @@ const app = Vue.createApp({
       confirmedName: '',
     };
   },
+  computed: {
+    fullName(){
+      console.log('run')
+      if(this.name === ''){
+        return '';
+      }
+      return this.name + ' Groth'
+    }
+  },
   methods: {
     setName(event) {
       this.name = event.target.value; 
@@ -19,7 +28,7 @@ const app = Vue.createApp({
     },
     decrement(){
       this.counter = this.counter - 1;
-    }
+    },
     },
 
 
