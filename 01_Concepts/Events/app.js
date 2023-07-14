@@ -10,9 +10,9 @@ const app = Vue.createApp({
     };
   },
   computed: {
-    fullName(){
+    fullName() {
       console.log('run')
-      if(this.name === '' || this.lastName){
+      if (this.name === '' || this.lastName) {
         return '';
       }
       return this.name + ' ' + this.lastName
@@ -20,38 +20,38 @@ const app = Vue.createApp({
   },
   methods: {
     setName(event) {
-      this.name = event.target.value; 
+      this.name = event.target.value;
     },
-    confirmName(){
+    confirmName() {
       this.confirmedName = this.name;
     },
     increment() {
       this.counter = this.counter + 1;
     },
-    decrement(){
+    decrement() {
       this.counter = this.counter - 1;
     },
-    },
-    watch: {
-      counter(value) {
-        if(value > 5) {
-          this.counter = 0;
-        }
+  },
+  watch: {
+    counter(value) {
+      if (value > 5) {
+        this.counter = 0;
       }
-      // name(value){
-      //   if(value === ''){
-      //     this.fullName = '';
-      //   } else {
-      //     this.fullName = value + ' ' + this.lastName;
-      //   }
-      // },
-      // lastName(value){
-      //   if (value === ''){
-      //     this.fullName = '';
-      //   } else {
-      //     this.fullname = this.name + ' ' + value;
-      //   }
-      // }
     }
+    // name(value){
+    //   if(value === ''){
+    //     this.fullName = '';
+    //   } else {
+    //     this.fullName = value + ' ' + this.lastName;
+    //   }
+    // },
+    // lastName(value){
+    //   if (value === ''){
+    //     this.fullName = '';
+    //   } else {
+    //     this.fullname = this.name + ' ' + value;
+    //   }
+    // }
+  }
 });
 app.mount('#user-goal');

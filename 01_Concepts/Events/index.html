@@ -17,8 +17,8 @@
     </header>
     <section id="user-goal">
       <h2>Events in Action</h2>
-      <button v-on:click="increment">Add</button>
-      <button v-on:click.left="decrement">Reduce</button>
+      <button v-on:click="increment">Add</button> <!-- @click or v-on:click are the same -->
+      <button v-on:click.left="decrement">Reduce</button> 
       <p>Result: {{ counter }}</p>
       <input type="text" v-model="name" v-on:keyup.enter="confirmName">
       <input type="text" v-model="lastName">
