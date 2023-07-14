@@ -8,8 +8,11 @@ const app = Vue.createApp({
   },
 
   methods: {
+    saveData(ev){
+      this.data = ev.target.value;
+    },
     showAlert(){
-      return alert('Bruno + Vue = <3');
+      alert('Bruno + Vue = <3');
     },
     setValidatedOutput(ev){
       this.validatedOutput = ev.target.value;
