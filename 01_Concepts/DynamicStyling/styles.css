@@ -32,3 +32,7 @@ header {
   border: 2px dashed #ccc;
 }
 
+.active {
+  border-color: red;
+}
+
