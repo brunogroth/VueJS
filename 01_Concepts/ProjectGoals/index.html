@@ -15,12 +15,12 @@
     <header>
       <h1>Vue Course Goals</h1>
     </header>
-    <section id="user-goal">
+    <section id="user-goals">
       <h2>My Course Goal</h2>
-      <p>{{ courseGoal }}</p>
+      <p>{{ goal }}</p>
 
       <p> Learn more <a v-bind:href="vueLink">about Vue</a>.</p>
-      <button v-on:click="outputGoal">Update goal</button>
+      <button v-on:click="outputGoal()">Update goal</button>
     </section>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="app.js">
