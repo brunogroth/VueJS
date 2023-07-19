@@ -21,9 +21,22 @@
       <input type="text" v-model="enteredGoalValue" v-on:keyup.enter="addGoal"/>
       <button @click="addGoal">Add Goal</button>
       <p v-if="goals.length === 0">No goals have been added yet - please start adding some!</p>
-      <ul v-else>
-        <li v-for="goal in goals">{{goal}}</li>
-      </ul>
+      <div v-else>
+        <ul>
+          <li v-for="(goal, index) in goals" :key="{{goal}}" @click="removeGoal(index)">{{ index }} - {{ goal }}</li>
+        </ul>
+        <small>* Click on any goal to remove it from the list</small>
+      </div>
+      <!-- <ul >
+        // ITERATING AN OBJECT
+        <li v-for="(value, key, index) in {name: 'Bruno', age: 20}">
+          {{value }} - {{ key }} - {{ index }}
+        </li>
+      </ul> -->
+      <!-- <ul>
+        // ITERATING A NUMBER
+        <li v-for="num in 10">{{ num }}</li>
+      </ul> -->
     </section>
   </body>
 </html>
