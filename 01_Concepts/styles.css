@@ -76,3 +76,19 @@ body button:active {
   border-color: #ec3169;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
 }
+
+#user-goals ul {
+  list-style: none;
+  margin: 1rem 0;
+  padding: 0;
+}
+
+#user-goals li {
+  margin: 1rem 0;
+  font-size: 1.25rem;
+  font-weight: bold;
+  background-color: #8ddba4;
+  padding: 0.5rem;
+  color: #1f1f1f;
+  border-radius: 25px;
+}
