@@ -92,3 +92,7 @@ body button:active {
   color: #1f1f1f;
   border-radius: 25px;
 }
+
+.hidden {
+  display: none;
+}
