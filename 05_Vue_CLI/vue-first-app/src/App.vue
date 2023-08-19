@@ -1,9 +1,17 @@
 <template>
   <section>
-    <h2>My Friends</h2>
+    <header><h1>My Friends</h1></header>
     <ul>
-      <friend-contact></friend-contact>
-      <friend-contact></friend-contact>
+      <friend-contact
+        name="John Galt"
+        phone-number="1234-5678"
+        email-address="johngalt@localhost.com"
+      ></friend-contact>
+      <friend-contact
+        name="Johanna"
+        phone-number="1234-5678"
+        email-address="Johanna@localhost.com"
+      ></friend-contact>
     </ul>
   </section>
 </template>
