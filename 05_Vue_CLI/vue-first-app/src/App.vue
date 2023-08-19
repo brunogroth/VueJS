@@ -6,11 +6,13 @@
         name="John Galt"
         phone-number="1234-5678"
         email-address="johngalt@localhost.com"
+        is-favorite="1"
       ></friend-contact>
       <friend-contact
         name="Johanna"
         phone-number="1234-5678"
         email-address="Johanna@localhost.com"
+        is-favorite="0"
       ></friend-contact>
     </ul>
   </section>
