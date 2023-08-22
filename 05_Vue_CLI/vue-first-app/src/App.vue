@@ -1,6 +1,9 @@
 <template>
   <section>
     <header><h1>My Friends</h1></header>
+    <div>
+      <new-friend @new-friend="createFriend"></new-friend>
+    </div>
     <ul>
       <friend-contact v-for="(friend) in friendList" :key="friend.id"
         :id="friend.id"
@@ -40,6 +43,12 @@ export default {
     toggleFavoriteStatus(id) {
       const identifiedFriend = this.friendList.find(friend => friend.id === id);
       identifiedFriend.isFavorite = !identifiedFriend.isFavorite;
+    },
+    createFriend(friend){
+      console.log(friend);
+      friend.id = this.friendList[this.friendList.length - 1].id + 1;
+      console.log(friend.id);
+      this.friendList.push(friend);
     }
   }
 };
@@ -76,7 +85,8 @@ header {
   list-style: none;
 }
 
-#app li {
+#app li,
+#app form {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   margin: 1rem auto;
   border-radius: 10px;
