@@ -1,10 +1,13 @@
 <template>
   <div>
+    <header>
+      <h2>Knowledge Base</h2>
+    </header>
     <active-element
       :topic-title="activeTopic && activeTopic.title"
       :text="activeTopic && activeTopic.fullText"
     ></active-element>
-    <knowledge-base :topics="topics" @select-topic="activateTopic"></knowledge-base>
+    <knowledge-base @select-topic="activateTopic"></knowledge-base>
   </div>
 </template>
 
@@ -32,10 +35,27 @@ export default {
       activeTopic: null,
     };
   },
+  provide() {
+    return {
+      topics: this.topics,
+    };
+  },
   methods: {
     activateTopic(topicId) {
       this.activeTopic = this.topics.find((topic) => topic.id === topicId);
     },
+  },
+
+  mounted() {
+    setTimeout(() => {
+      this.topics.push({
+        id: 'events',
+        title: 'Events',
+        description: 'Events allow you to trigger code on demand!',
+        fullText:
+          'Vue components interact with each other via props and by emitting events by calling $emit.',
+      });
+    }, 3000);
   },
 };
 </script>
@@ -49,6 +69,11 @@ html {
 }
 body {
   margin: 0;
+}
+
+header {
+  margin-top: 2rem;
+  text-decoration: underline;
 }
 section {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
