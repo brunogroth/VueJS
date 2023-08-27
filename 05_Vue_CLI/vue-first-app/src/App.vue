@@ -5,13 +5,16 @@
       <new-friend @new-friend="createFriend"></new-friend>
     </div>
     <ul>
-      <friend-contact v-for="(friend) in friendList" :key="friend.id"
+      <friend-contact
+        v-for="friend in friendList"
+        :key="friend.id"
         :id="friend.id"
         :name="friend.name"
         :phone-number="friend.phone"
         :email-address="friend.email"
         :is-favorite="friend.isFavorite"
         @toggle-favorite="toggleFavoriteStatus(friend.id)"
+        @delete-friend="deleteFriend"
       ></friend-contact>
     </ul>
   </section>
@@ -23,34 +26,37 @@ export default {
     return {
       friendList: [
         {
-          id: 1,
+          id: "john-galt",
           name: "John Galt",
           phone: "1234-5678",
           email: "john@galt.com",
-          isFavorite: true
+          isFavorite: true,
         },
         {
-          id: 2,
+          id: "johanna",
           name: "Johanna",
           phone: "1234-5678",
           email: "Johanna@localhost.com",
-          isFavorite: false
+          isFavorite: false,
         },
       ],
     };
   },
   methods: {
     toggleFavoriteStatus(id) {
-      const identifiedFriend = this.friendList.find(friend => friend.id === id);
+      const identifiedFriend = this.friendList.find(
+        (friend) => friend.id === id
+      );
       identifiedFriend.isFavorite = !identifiedFriend.isFavorite;
     },
-    createFriend(friend){
-      console.log(friend);
-      friend.id = this.friendList[this.friendList.length - 1].id + 1;
-      console.log(friend.id);
+    createFriend(friend) {
+      friend.id = new Date().toISOString();
       this.friendList.push(friend);
-    }
-  }
+    },
+    deleteFriend(id) {
+      this.friendList.splice(id, 1);
+    },
+  },
 };
 </script>
 
@@ -118,5 +124,19 @@ header {
   background-color: #ec3169;
   border-color: #ec3169;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
+}
+
+#app input {
+  font: inherit;
+  padding: 0.15rem;
+}
+#app label {
+  font-weight: bold;
+  margin-right: 1rem;
+  width: 7rem;
+  display: inline-block;
+}
+#app form div {
+  margin: 1rem 0;
 }
 </style>
