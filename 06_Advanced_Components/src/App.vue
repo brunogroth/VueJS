@@ -16,17 +16,13 @@
 </template>
 
 <script>
-// import BadgeList from "./components/BadgeList.vue";
-// import CourseGoals from "./components/CourseGoals.vue";
-// import UserInfo from "./components/UserInfo.vue";
-import TheHeader from "./components/TheHeader.vue";
+import TheHeader from "./components/layout/TheHeader.vue";
 import ActiveGoals from "./components/ActiveGoals.vue";
 import ManageGoals from "./components/ManageGoals.vue";
 
 export default {
   components: {
     TheHeader,
-
     ActiveGoals,
     ManageGoals,
   },
