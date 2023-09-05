@@ -1,4 +1,29 @@
-<template><h1>oi</h1></template>
+<template>
+  <BookmarkList :bookmarks="storedBookmarks" />
+</template>
 <script>
-export default {}
+import BookmarkList from './components/bookmarks/BookmarkList.vue'
+
+export default {
+  components: { BookmarkList },
+  data() {
+    return {
+      storedBookmarks: [
+        {
+          id: 'official-vue-guide',
+          title: 'Official Vue Guide',
+          description: 'The official Vue.js documentation.',
+          link: 'https://vuejs.org'
+        },
+        {
+          id: 'stack-over-flow',
+          title: 'Stack Overflow',
+          description:
+            'A public platform building the definitive collection of coding questions & answers',
+          link: 'https://stackoverflow.com/'
+        }
+      ]
+    }
+  }
+}
 </script>
