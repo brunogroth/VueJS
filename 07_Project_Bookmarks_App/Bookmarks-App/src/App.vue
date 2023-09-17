@@ -1,34 +1,15 @@
 <template>
   <div>
     <the-header title="BookmarksApp" />
-    <BookmarkList :bookmarks="storedBookmarks" />
+    <the-bookmarks />
   </div>
 </template>
 <script>
 import TheHeader from './components/layout/TheHeader.vue'
-import BookmarkList from './components/bookmarks/BookmarkList.vue'
+import TheBookmarks from './components/bookmarks/TheBookmarks.vue'
 
 export default {
-  components: { BookmarkList, TheHeader },
-  data() {
-    return {
-      storedBookmarks: [
-        {
-          id: 'official-vue-guide',
-          title: 'Official Vue Guide',
-          description: 'The official Vue.js documentation.',
-          link: 'https://vuejs.org'
-        },
-        {
-          id: 'stack-over-flow',
-          title: 'Stack Overflow',
-          description:
-            'A public platform building the definitive collection of coding questions & answers',
-          link: 'https://stackoverflow.com/'
-        }
-      ]
-    }
-  }
+  components: { TheHeader, TheBookmarks }
 }
 </script>
 

@@ -14,7 +14,7 @@ import BookmarkItem from './BookmarkItem.vue'
 
 export default {
   components: { BookmarkItem },
-  props: ['bookmarks']
+  inject: ['bookmarks']
 }
 </script>
 
