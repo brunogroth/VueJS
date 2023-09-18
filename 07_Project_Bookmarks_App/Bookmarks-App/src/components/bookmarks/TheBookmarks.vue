@@ -1,17 +1,15 @@
 <template>
-  <base-card>
-    <base-button
-      @click="setSelectedTab('bookmark-list')"
-      :mode="selectedTab === 'bookmark-list' ? null : 'flat'"
-      >Bookmark List</base-button
-    >
-    <base-button
-      @click="setSelectedTab('bookmark-create')"
-      :mode="selectedTab === 'bookmark-create' ? null : 'flat'"
-      >Create Bookmark</base-button
-    >
-    <component :is="selectedTab"></component>
-  </base-card>
+  <keep-alive>
+    <base-card>
+      <base-button @click="setSelectedTab('bookmark-list')" :mode="BookmarkListButtonMode"
+        >Bookmark List</base-button
+      >
+      <base-button @click="setSelectedTab('bookmark-create')" :mode="CreateBookmarkButtonMode"
+        >Create Bookmark</base-button
+      >
+      <component :is="selectedTab" @create-bookmark="createBookmark"></component>
+    </base-card>
+  </keep-alive>
 </template>
 
 <script>
@@ -50,9 +48,22 @@ export default {
     }
   },
 
+  computed: {
+    BookmarkListButtonMode() {
+      return this.selectedTab === 'bookmark-list' ? null : 'flat'
+    },
+    CreateBookmarkButtonMode() {
+      return this.selectedTab === 'bookmark-create' ? null : 'flat'
+    }
+  },
+
   methods: {
     setSelectedTab(tab) {
       this.selectedTab = tab
+    },
+    createBookmark(bookmark) {
+      this.storedBookmarks.push(bookmark)
+      this.selectedTab = 'bookmark-list'
     }
   }
 }
