@@ -2,19 +2,19 @@
   <div>
     <h2>Create Bookmark</h2>
     <base-card>
-      <form @submit.prevent="createBookmark">
+      <form @submit.prevent="submitData">
         <div class="form-control">
           <label for="title">Title</label>
-          <input type="text" name="title" id="title" v-model="bookmark.title" />
+          <input type="text" name="title" id="title" ref="titleInput" />
         </div>
         <div class="form-control">
           <label for="description">Description</label>
-          <textarea rows="3" name="description" id="description" v-model="bookmark.description" />
+          <textarea rows="3" name="description" id="description" ref="descriptionInput" />
         </div>
         <div class="form-control">
           <label for="link">Link</label>
-          <input type="url" name="link" id="link" v-model="bookmark.link" />
-          <!-- ref="" is also valid instead of v-model -->
+          <input type="url" name="link" id="link" ref="linkInput" />
+          <!-- v-model="" is also valid instead of ref -->
         </div>
         <div>
           <base-button type="submit">Create Bookmark </base-button>
@@ -26,24 +26,17 @@
 
 <script>
 export default {
-  emits: ['create-bookmark'],
-  data() {
-    return {
-      bookmark: {
-        id: '',
-        title: '',
-        description: '',
-        link: ''
-      }
-    }
-  },
+  inject: ['createBookmark'], // injecting method
 
   methods: {
-    createBookmark() {
-      this.bookmark.id = new Date().toISOString()
-      // if using ref="", const bookmarkTitle = this.$refs.title.value [...]
-      console.log(this.bookmark)
-      this.$emit('create-bookmark', this.bookmark)
+    submitData() {
+      const bookmark = {
+        id: new Date().toISOString(),
+        title: this.$refs.titleInput.value,
+        description: this.$refs.descriptionInput.value,
+        link: this.$refs.linkInput.value
+      }
+      this.createBookmark(bookmark) // using method injected
     }
   }
 }

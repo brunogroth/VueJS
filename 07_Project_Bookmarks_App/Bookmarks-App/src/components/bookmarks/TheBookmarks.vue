@@ -1,25 +1,28 @@
 <template>
-  <keep-alive>
-    <base-card>
-      <base-button @click="setSelectedTab('bookmark-list')" :mode="BookmarkListButtonMode"
-        >Bookmark List</base-button
-      >
-      <base-button @click="setSelectedTab('bookmark-create')" :mode="CreateBookmarkButtonMode"
-        >Create Bookmark</base-button
-      >
-      <component :is="selectedTab" @create-bookmark="createBookmark"></component>
-    </base-card>
-  </keep-alive>
+  <base-card>
+    <base-button @click="setSelectedTab('bookmark-list')" :mode="BookmarkListButtonMode"
+      >Bookmark List</base-button
+    >
+    <base-button @click="setSelectedTab('bookmark-create')" :mode="CreateBookmarkButtonMode"
+      >Create Bookmark</base-button
+    >
+    <keep-alive>
+      <component :is="selectedTab"></component>
+    </keep-alive>
+  </base-card>
 </template>
 
 <script>
+import BaseButton from '../UI/BaseButton.vue'
+import BaseCard from '../UI/BaseCard.vue'
 import BookmarkCreate from './BookmarkCreate.vue'
 import BookmarkList from './BookmarkList.vue'
-
 export default {
   components: {
     BookmarkList,
-    BookmarkCreate
+    BookmarkCreate,
+    BaseButton,
+    BaseCard
   },
   data() {
     return {
@@ -44,7 +47,8 @@ export default {
 
   provide() {
     return {
-      bookmarks: this.storedBookmarks
+      bookmarks: this.storedBookmarks,
+      createBookmark: this.createBookmark // method
     }
   },
 
