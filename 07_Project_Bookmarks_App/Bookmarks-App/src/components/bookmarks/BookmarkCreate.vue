@@ -1,7 +1,15 @@
 <template>
   <div>
-    <h2>Create Bookmark</h2>
+    <base-dialog title="Invalid Input" v-if="inputIsInvalid" @close="confirmError">
+      <!-- "@close" is a listener for the event close emitted in BaseDialog, the main component.-->
+      <template #default>
+        <p>Unfortunately, at least one input value is invalid.</p>
+        <p>Please check the fields and try again.</p>
+      </template>
+      <template #actions> <base-button @click="confirmError">Okay</base-button> </template>
+    </base-dialog>
     <base-card>
+      <h2>Create Bookmark</h2>
       <form @submit.prevent="submitData">
         <div class="form-control">
           <label for="title">Title</label>
@@ -17,7 +25,7 @@
           <!-- v-model="" is also valid instead of ref -->
         </div>
         <div>
-          <base-button type="submit">Create Bookmark </base-button>
+          <base-button type="submit">Create Bookmark</base-button>
         </div>
       </form>
     </base-card>
@@ -25,9 +33,15 @@
 </template>
 
 <script>
+import BaseDialog from '../UI/BaseDialog.vue'
 export default {
+  components: { BaseDialog },
   inject: ['createBookmark'], // injecting method
-
+  data() {
+    return {
+      inputIsInvalid: false
+    }
+  },
   methods: {
     submitData() {
       const bookmark = {
@@ -36,7 +50,18 @@ export default {
         description: this.$refs.descriptionInput.value,
         link: this.$refs.linkInput.value
       }
-      this.createBookmark(bookmark) // using method injected
+      if (
+        bookmark.title.trim() === '' ||
+        bookmark.description.trim() === '' ||
+        bookmark.link.trim() === ''
+      ) {
+        this.inputIsInvalid = true
+        return
+      }
+      this.createBookmark(bookmark) // using injected method
+    },
+    confirmError() {
+      this.inputIsInvalid = false
     }
   }
 }

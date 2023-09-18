@@ -13,16 +13,12 @@
 </template>
 
 <script>
-import BaseButton from '../UI/BaseButton.vue'
-import BaseCard from '../UI/BaseCard.vue'
 import BookmarkCreate from './BookmarkCreate.vue'
 import BookmarkList from './BookmarkList.vue'
 export default {
   components: {
     BookmarkList,
-    BookmarkCreate,
-    BaseButton,
-    BaseCard
+    BookmarkCreate
   },
   data() {
     return {

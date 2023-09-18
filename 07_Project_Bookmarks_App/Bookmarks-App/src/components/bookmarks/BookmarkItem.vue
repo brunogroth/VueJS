@@ -13,10 +13,7 @@
   </li>
 </template>
 <script>
-import BaseCard from '../UI/BaseCard.vue'
-import BaseButton from '../UI/BaseButton.vue'
 export default {
-  components: { BaseButton, BaseCard },
   props: ['title', 'description', 'link']
 }
 </script>
