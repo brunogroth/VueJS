@@ -44,7 +44,8 @@ export default {
   provide() {
     return {
       bookmarks: this.storedBookmarks,
-      createBookmark: this.createBookmark // method
+      createBookmark: this.createBookmark, // method
+      deleteBookmark: this.deleteBookmark
     }
   },
 
@@ -64,6 +65,10 @@ export default {
     createBookmark(bookmark) {
       this.storedBookmarks.push(bookmark)
       this.selectedTab = 'bookmark-list'
+    },
+    deleteBookmark(id) {
+      const bookmIndex = this.storedBookmarks.findIndex((bookm) => bookm.id === id)
+      this.storedBookmarks.splice(bookmIndex, 1)
     }
   }
 }

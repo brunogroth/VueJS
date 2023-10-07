@@ -2,6 +2,7 @@
   <div>
     <ul v-for="bookmark in bookmarks" :key="bookmark.id">
       <BookmarkItem
+        :id="bookmark.id"
         :title="bookmark.title"
         :description="bookmark.description"
         :link="bookmark.link"
