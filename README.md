@@ -3,6 +3,8 @@
 Welcome to the VueJS Project! This repository contains a collection of files and code that demonstrate the usage of the Vue.js framework in building web applications. Whether you're new to Vue.js or an experienced developer looking for examples, this project aims to provide valuable insights and resources.
 
 ![image](https://github.com/brunogroth/VueJS/assets/96024737/ae5b9fab-bbae-443d-a712-35b7333f652e)
+<img src="https://github.com/brunogroth/VueJS/assets/96024737/3b9a06e9-9925-4f9c-83e1-bf892fe109f9" width="430px"><img src="https://github.com/brunogroth/VueJS/assets/96024737/8b4b0096-a96c-48d5-828d-f1150c738f7a" width="430px"> 
+
 
 ## Introduction
 
