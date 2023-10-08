@@ -10,15 +10,27 @@
         name="user-name"
         type="text"
         v-model.trim="userName"
-        @blur="validateInput"
+        @blur="validateNameInput"
       />
       <small v-if="userNameValidity === 'invalid'"
         >Please enter a valid name</small
       >
     </div>
-    <div class="form-control">
+    <div
+      class="form-control"
+      :class="{ invalid: userAgeValidity === 'invalid' }"
+    >
       <label for="age">Your Age (Years)</label>
-      <input id="age" name="age" type="number" v-model="userAge" />
+      <input
+        id="age"
+        name="age"
+        type="number"
+        v-model.trim="userAge"
+        @blur="validateAgeInput"
+      />
+      <small v-if="userAgeValidity === 'invalid'"
+        >Please enter a valid age.</small
+      >
     </div>
     <div class="form-control">
       <label for="referrer">How did you hear about us?</label>
@@ -95,6 +107,7 @@
       </div>
     </div>
     <div class="fom-control">
+      <label>How was your experience with this research?</label>
       <rating-control v-model="rating"></rating-control>
     </div>
     <div>
@@ -116,8 +129,9 @@ export default {
       referrer: "wom",
       interests: [],
       howLearn: null,
-      userNameValidity: "pending",
       rating: null,
+      userNameValidity: "pending",
+      userAgeValidity: "pending",
     };
   },
   methods: {
@@ -138,14 +152,22 @@ export default {
       this.rating = null;
     },
 
-    validateInput() {
-      if (this.userName == "") {
+    validateNameInput() {
+      if (this.userName == "" || this.userName == "nobody") {
         this.userNameValidity = "invalid";
       } else {
         this.userNameValidity = "valid";
       }
     },
+    validateAgeInput() {
+      if (this.userAge == null || this.userAge <= 3 || this.userAge >= 150) {
+        this.userAgeValidity = "invalid";
+      } else {
+        this.userAgeValidity = "valid";
+      }
+    },
   },
+
   setup() {},
 };
 </script>
