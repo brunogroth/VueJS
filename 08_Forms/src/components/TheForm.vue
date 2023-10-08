@@ -1,8 +1,20 @@
 <template>
   <form @submit.prevent="submitForm">
-    <div class="form-control">
+    <div
+      class="form-control"
+      :class="{ invalid: userNameValidity === 'invalid' }"
+    >
       <label for="user-name">Your Name</label>
-      <input id="user-name" name="user-name" type="text" v-model="userName" />
+      <input
+        id="user-name"
+        name="user-name"
+        type="text"
+        v-model.trim="userName"
+        @blur="validateInput"
+      />
+      <small v-if="userNameValidity === 'invalid'"
+        >Please enter a valid name</small
+      >
     </div>
     <div class="form-control">
       <label for="age">Your Age (Years)</label>
@@ -82,6 +94,9 @@
         <label for="how-other">Other</label>
       </div>
     </div>
+    <div class="fom-control">
+      <rating-control v-model="rating"></rating-control>
+    </div>
     <div>
       <button>Save Data</button>
     </div>
@@ -89,7 +104,11 @@
 </template>
 
 <script>
+import RatingControl from "./RatingControl.vue";
+
 export default {
+  components: { RatingControl },
+
   data() {
     return {
       userName: "",
@@ -97,6 +116,8 @@ export default {
       referrer: "wom",
       interests: [],
       howLearn: null,
+      userNameValidity: "pending",
+      rating: null,
     };
   },
   methods: {
@@ -113,6 +134,16 @@ export default {
       this.referrer = "wom";
       this.interests = [];
       this.howLearn = null;
+      console.log(this.rating);
+      this.rating = null;
+    },
+
+    validateInput() {
+      if (this.userName == "") {
+        this.userNameValidity = "invalid";
+      } else {
+        this.userNameValidity = "valid";
+      }
     },
   },
   setup() {},
@@ -126,11 +157,19 @@ form {
   border-radius: 12px;
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.26);
   padding: 2rem;
-  background-color: #519bd8;
+  background-color: #747474;
 }
 
 .form-control {
   margin: 0.5rem 0;
+}
+
+.form-control.invalid input {
+  border-color: red;
+}
+
+.form-control.invalid label {
+  color: red;
 }
 
 label {
