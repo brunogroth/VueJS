@@ -41,6 +41,7 @@
         <p v-if="invalidInput">
           One or more input fields are invalid. Please check your provided data.
         </p>
+        <p v-if="error">{{ error }}</p>
         <base-button>Submit</base-button>
       </form>
     </base-card>
@@ -56,6 +57,7 @@ export default {
       enteredName: "",
       chosenRating: null,
       invalidInput: false,
+      error: null,
     };
   },
 
@@ -72,7 +74,7 @@ export default {
       //   userName: this.enteredName,
       //   rating: this.chosenRating,
       // });
-
+      this.error = null;
       fetch(import.meta.env.VITE_API_FIREBASE_URL + "/surveys.json", {
         method: "POST",
         headers: {
@@ -82,7 +84,21 @@ export default {
           name: this.enteredName,
           rating: this.chosenRating,
         }),
-      });
+      })
+        .then((response) => {
+          if (response.ok) {
+            // ...
+          } else {
+            throw new Error(
+              "Something went wrong - try again later, check your .env file or contact the developer team!"
+            );
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          this.error =
+            "Something went wrong - try again later, check your .env file or contact the developer team!";
+        });
 
       this.enteredName = "";
       this.chosenRating = null;
