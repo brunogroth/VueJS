@@ -49,6 +49,8 @@
 
 <script>
 export default {
+  emits: ["survey-submit"],
+
   data() {
     return {
       enteredName: "",
@@ -65,9 +67,21 @@ export default {
       }
       this.invalidInput = false;
 
-      this.$emit("survey-submit", {
-        userName: this.enteredName,
-        rating: this.chosenRating,
+      // event removed - now data goes to Firebase API
+      // this.$emit("survey-submit", {
+      //   userName: this.enteredName,
+      //   rating: this.chosenRating,
+      // });
+
+      fetch(import.meta.env.VITE_API_FIREBASE_URL + "/surveys.json", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: this.enteredName,
+          rating: this.chosenRating,
+        }),
       });
 
       this.enteredName = "";
