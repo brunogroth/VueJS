@@ -17,6 +17,22 @@ export default {
     UserItem,
   },
   inject: ["users"],
+
+  beforeRouterEnter(to, from, next) {
+    // something here
+    next();
+  },
+
+  // beforeRouterLeave(to, from, next) {
+  //   if (!this.changesSaved) {
+  //     const userWantsToLeave = confirm(
+  //       "are you shure that wants to leave? There is unsaved data"
+  //     );
+  //     if (userWantsToLeave) {
+  //       next(userWantsToLeave);
+  //     }
+  //   }
+  // },
 };
 </script>
 
