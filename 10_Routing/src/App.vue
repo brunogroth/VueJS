@@ -25,11 +25,11 @@ export default {
         { id: "t3", name: "Client Consulting", members: ["u4", "u5"] },
       ],
       users: [
-        { id: "u1", fullName: "Max Schwarz", role: "Engineer" },
-        { id: "u2", fullName: "Praveen Kumar", role: "Engineer" },
-        { id: "u3", fullName: "Julie Jones", role: "Engineer" },
-        { id: "u4", fullName: "Alex Blackfield", role: "Consultant" },
-        { id: "u5", fullName: "Marie Smith", role: "Consultant" },
+        { id: "u1", fullName: "Bruno Groth", role: "Engineer" },
+        { id: "u2", fullName: "Lucius Annaeus Seneca", role: "Engineer" },
+        { id: "u3", fullName: "Marcus Aurelius Antoninus", role: "Engineer" },
+        { id: "u4", fullName: "Sextus Empiricus", role: "Consultant" },
+        { id: "u5", fullName: "Marcus Tullius Cicero", role: "Consultant" },
       ],
     };
   },
