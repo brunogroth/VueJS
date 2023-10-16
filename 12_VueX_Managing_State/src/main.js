@@ -3,6 +3,8 @@ import { createStore } from "vuex";
 
 import App from "./App.vue";
 
+// Core functionalities of VueX: State, Mutations, Actions and Getters - and how to use them
+
 const store = createStore({
   state() {
     return {
@@ -15,6 +17,14 @@ const store = createStore({
     },
     increase(state, payload) {
       state.counter = state.counter + payload.value;
+    },
+  },
+  actions: {
+    increment(context) {
+      context.commit("increment");
+    },
+    increase(context, payload) {
+      context.commit("increase", payload);
     },
   },
   getters: {
