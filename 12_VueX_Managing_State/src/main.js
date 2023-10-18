@@ -3,9 +3,7 @@ import { createStore } from "vuex";
 
 import App from "./App.vue";
 
-// Core functionalities of VueX: State, Mutations, Actions and Getters - and how to use them
-
-const store = createStore({
+const counterModule = {
   state() {
     return {
       counter: 0,
@@ -42,9 +40,39 @@ const store = createStore({
       return finalCounter;
     },
   },
+};
+
+// Core functionalities of VueX: State, Mutations, Actions and Getters - and how to use them
+
+const store = createStore({
+  modules: {
+    counter: counterModule,
+  },
+  state() {
+    return {
+      isLogged: false,
+    };
+  },
+  mutations: {
+    // Auth
+    setAuth(state) {
+      state.isLogged = !state.isLogged;
+    },
+  },
+  actions: {
+    // Auth
+    setAuth(context) {
+      context.commit("setAuth");
+    },
+  },
+  getters: {
+    // Auth
+    isLogged(state) {
+      return state.isLogged;
+    },
+  },
 });
 
 const app = createApp(App);
-
 app.use(store);
 app.mount("#app");
