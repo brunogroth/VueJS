@@ -36,7 +36,7 @@ export default {
     addOne() {
       // this.$store.commit("increase", { value: 10 }); // can be used
       this.$store.dispatch({
-        type: "increase",
+        type: "counterModule/increase",
         value: 10,
       });
     },

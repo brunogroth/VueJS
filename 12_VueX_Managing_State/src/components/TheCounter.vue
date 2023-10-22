@@ -10,7 +10,7 @@ export default {
     // counter() {
     //   return this.$store.getters.finalCounter;
     // },
-    ...mapGetters(["finalCounter"]), // VueX Mapper Helper - optional
+    ...mapGetters("counterModule", ["finalCounter"]), // VueX Mapper Helper - optional
   },
 };
 </script>

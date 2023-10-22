@@ -18,16 +18,16 @@ export default {
     addOne() {
       // this.$store.state.counter++; // NOT RECOMMENDED practice
       // this.$store.commit("increment"); // ok practice - only synchronous code - execute the mutation (method "increment")
-      this.$store.dispatch("increment"); // best practice - execute the actions that runs the mutation (method "increment")
+      this.$store.dispatch("counterModule/increment"); // best practice - execute the actions that runs the mutation (method "increment")
     },
     addMultiple(payload) {
       // this.$store.state.counter++; // NOT RECOMMENDED practice
       // this.$store.commit("increment"); // ok practice - only synchronous code - execute the mutation (method "increment")
-      this.$store.dispatch("increase", payload); // best practice - execute the actions that runs the mutation (method "increment")
+      this.$store.dispatch("counterModule/increase", payload); // best practice - execute the actions that runs the mutation (method "increment")
     },
 
     // OR, using VueX Mapper Helpers:
-    ...mapActions(["increase"]),
+    ...mapActions("counterModule", ["increase"]),
   },
 };
 </script>
